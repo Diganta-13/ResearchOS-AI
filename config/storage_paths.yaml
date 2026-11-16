@@ -1,0 +1,33 @@
+# ResearchOS AI — Storage Paths Configuration
+# Generated in Phase 0: Environment Audit & Storage Isolation
+# All persistent paths are strictly mapped to Drive D:\ to protect Drive C:\ (14.36 GB free)
+
+version: "2.1.0"
+storage_target_drive: "D:"
+
+paths:
+  workspace_root: "D:\\Projects\\ResearchOS-AI"
+  storage_root: "D:\\Projects\\ResearchOS-AI\\storage"
+  
+  # Database & State
+  database_dir: "D:\\Projects\\ResearchOS-AI\\storage\\db"
+  database_file: "D:\\Projects\\ResearchOS-AI\\storage\\db\\researchos.db"
+  
+  # Model Weights & Tool Caches (Redirected away from C:\Users\<user>)
+  ollama_models: "D:\\Projects\\ResearchOS-AI\\storage\\.ollama\\models"
+  huggingface_cache: "D:\\Projects\\ResearchOS-AI\\storage\\.cache\\huggingface"
+  fastembed_cache: "D:\\Projects\\ResearchOS-AI\\storage\\.cache\\fastembed"
+  pip_cache: "D:\\Projects\\ResearchOS-AI\\storage\\.cache\\pip"
+  temp_dir: "D:\\Projects\\ResearchOS-AI\\storage\\.cache\\tmp"
+  
+  # Data, Documents & Workspace Artifacts
+  vector_index: "D:\\Projects\\ResearchOS-AI\\storage\\vector_index"
+  documents: "D:\\Projects\\ResearchOS-AI\\storage\\documents"
+  scratchpad: "D:\\Projects\\ResearchOS-AI\\storage\\scratchpad"
+  logs: "D:\\Projects\\ResearchOS-AI\\storage\\logs"
+
+isolation_policy:
+  drive_c_protection: "ENFORCED"
+  drive_c_min_free_threshold_gb: 15.0
+  drive_d_workspace_verified: true
+  allow_c_drive_writes: false

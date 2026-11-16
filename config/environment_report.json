@@ -1,0 +1,183 @@
+{
+  "report_metadata": {
+    "product": "ResearchOS AI",
+    "phase": "Phase 0: Environment Audit & Hardware Profiling",
+    "spec_version": "2.1.0",
+    "timestamp": "2026-11-16 13:22:32",
+    "host_node": "Destroyer",
+    "overall_status": "FAIL"
+  },
+  "audit_checks": [
+    {
+      "check": "Workspace Root Path",
+      "status": "PASS",
+      "measured_value": "D:\\Projects\\ResearchOS-AI",
+      "expected_value": "D:\\Projects\\ResearchOS-AI",
+      "details": "Current working directory exactly matches target project root."
+    },
+    {
+      "check": "CPU Model & AVX2 Support",
+      "status": "PASS",
+      "measured_value": {
+        "processor_name": "Intel(R) Core(TM) i7-8665U CPU @ 1.90GHz",
+        "vendor": "GenuineIntel",
+        "logical_cores": 8,
+        "avx2_supported": true
+      },
+      "details": "Intel(R) Core(TM) i7-8665U CPU @ 1.90GHz with 8 logical threads. AVX2 instruction set verified."
+    },
+    {
+      "check": "Physical RAM Capacity & Idle Usage",
+      "status": "PASS",
+      "measured_value": {
+        "total_ram_gb": 15.82,
+        "available_ram_gb": 6.64,
+        "used_ram_gb": 9.18,
+        "memory_load_percent": 58
+      },
+      "details": "Total RAM is 15.82 GB (>= 14.0 GB budget). Currently 6.64 GB free (58% load)."
+    },
+    {
+      "check": "Drive C: Available Capacity (Safety Boundary)",
+      "status": "FAIL",
+      "measured_value": {
+        "total_gb": 119.93,
+        "used_gb": 105.59,
+        "free_gb": 14.33,
+        "threshold_min_gb": 15.0
+      },
+      "details": "Drive C: has 14.33 GB free. CRITICAL: Less than minimum safety threshold of 15.0 GB!"
+    },
+    {
+      "check": "Drive D: Workspace Capacity",
+      "status": "PASS",
+      "measured_value": {
+        "total_gb": 279.08,
+        "used_gb": 109.68,
+        "free_gb": 169.4,
+        "threshold_min_gb": 150.0
+      },
+      "details": "Drive D: has 169.40 GB free (ample capacity for models, datasets, and cache)."
+    },
+    {
+      "check": "Drive D: Physical Hardware & Bus Type",
+      "status": "PASS",
+      "measured_value": {
+        "driver": "stornvme",
+        "device_identifier": "NVMe    ADATA LEGEND 9004436",
+        "bus_type": "NVMe"
+      },
+      "details": "Verified physical storage controller: NVMe    ADATA LEGEND 9004436 under 'stornvme' driver (High-speed PCIe NVMe SSD confirmed)."
+    },
+    {
+      "check": "Drive D: I/O Performance Benchmark",
+      "status": "PASS",
+      "measured_value": {
+        "sequential_write_speed_mb_s": 848.94,
+        "sequential_read_speed_mb_s": 1379.73,
+        "random_4k_write_iops": 15756.8,
+        "random_4k_read_iops": 84339.8
+      },
+      "details": "Seq Write: 848.9 MB/s, Seq Read: 1379.7 MB/s, 4K Random: 15757 write IOPS, 84340 read IOPS."
+    },
+    {
+      "check": "Python 3.12 64-bit & Virtualenv Capability",
+      "status": "PASS",
+      "measured_value": {
+        "system_default_python": "3.12.10",
+        "python_312_binary": "C:\\Users\\digan\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "python_312_version": "3.12.10",
+        "python_312_architecture": "64bit",
+        "venv_module_functional": true
+      },
+      "details": "Python 3.12 64-bit detected at 'C:\\Users\\digan\\AppData\\Local\\Programs\\Python\\Python312\\python.exe' with functional venv module. (Note: system default PATH currently points to Python 3.12.10)."
+    },
+    {
+      "check": "Ollama Local Service & Models",
+      "status": "BLOCKED",
+      "measured_value": {
+        "daemon_online": false,
+        "endpoint": "http://127.0.0.1:11434",
+        "cli_in_path": false,
+        "installed_models": []
+      },
+      "details": "Ollama daemon is offline / not installed: <urlopen error [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions>."
+    },
+    {
+      "check": "Audio Hardware (Microphone & Speakers)",
+      "status": "PASS",
+      "measured_value": {
+        "input_devices_count": 1,
+        "output_devices_count": 2,
+        "inputs": [
+          {
+            "index": 0,
+            "name": "Microphone Array (Intel\u00ae Smart",
+            "channels": 2
+          }
+        ],
+        "outputs": [
+          {
+            "index": 0,
+            "name": "Speakers (Realtek(R) Audio)",
+            "channels": 2
+          },
+          {
+            "index": 1,
+            "name": "PCM22FRX (Intel(R) Display Audi",
+            "channels": 2
+          }
+        ]
+      },
+      "details": "Found 1 audio input device(s) and 2 output device(s)."
+    },
+    {
+      "check": "Git Version Control",
+      "status": "PASS",
+      "measured_value": "git version 2.54.0.windows.1",
+      "details": "Git binary detected: git version 2.54.0.windows.1"
+    },
+    {
+      "check": "LaTeX Compiler Engine (pdflatex/latexmk)",
+      "status": "BLOCKED",
+      "measured_value": "Not found",
+      "details": "No LaTeX distribution (MiKTeX/TeX Live) detected in PATH. Capability 07 LaTeX compilation will require installation or fallback."
+    },
+    {
+      "check": "Storage Redirection to Drive D:",
+      "status": "PASS",
+      "measured_value": {
+        "config_file": "D:\\Projects\\ResearchOS-AI\\config\\storage_paths.yaml",
+        "storage_target_drive": "D:",
+        "total_paths_verified": 13,
+        "paths": {
+          "workspace_root": "D:\\\\Projects\\\\ResearchOS-AI",
+          "storage_root": "D:\\\\Projects\\\\ResearchOS-AI\\\\storage",
+          "database_dir": "D:\\\\Projects\\\\ResearchOS-AI\\\\storage\\\\db",
+          "database_file": "D:\\\\Projects\\\\ResearchOS-AI\\\\storage\\\\db\\\\researchos.db",
+          "ollama_models": "D:\\\\Projects\\\\ResearchOS-AI\\\\storage\\\\.ollama\\\\models",
+          "huggingface_cache": "D:\\\\Projects\\\\ResearchOS-AI\\\\storage\\\\.cache\\\\huggingface",
+          "fastembed_cache": "D:\\\\Projects\\\\ResearchOS-AI\\\\storage\\\\.cache\\\\fastembed",
+          "pip_cache": "D:\\\\Projects\\\\ResearchOS-AI\\\\storage\\\\.cache\\\\pip",
+          "temp_dir": "D:\\\\Projects\\\\ResearchOS-AI\\\\storage\\\\.cache\\\\tmp",
+          "vector_index": "D:\\\\Projects\\\\ResearchOS-AI\\\\storage\\\\vector_index",
+          "documents": "D:\\\\Projects\\\\ResearchOS-AI\\\\storage\\\\documents",
+          "scratchpad": "D:\\\\Projects\\\\ResearchOS-AI\\\\storage\\\\scratchpad",
+          "logs": "D:\\\\Projects\\\\ResearchOS-AI\\\\storage\\\\logs"
+        },
+        "offending_paths": []
+      },
+      "details": "All 13 target paths in 'paths' section point strictly to Drive D:."
+    }
+  ],
+  "identified_problems": [
+    "Drive C: free space is 14.33 GB, which is below the strict safety threshold of 15.0 GB.",
+    "Ollama daemon is offline and not present in system PATH.",
+    "No local LaTeX compiler (pdflatex / latexmk) detected in system PATH."
+  ],
+  "recommended_corrections": [
+    "User must manually free up at least 1 GB on Drive C: (e.g., empty Recycle Bin, clean temporary downloads, or run Windows Disk Cleanup) to achieve >= 15.0 GB free. As per Safety Rule, agent will NOT attempt automatic deletion.",
+    "Install Ollama on Windows, set $env:OLLAMA_MODELS = 'D:\\Projects\\ResearchOS-AI\\storage\\.ollama\\models', start the Ollama service, and verify 'http://127.0.0.1:11434' is reachable.",
+    "For Capability 07 (LaTeX compilation), install MiKTeX or TeX Live to Drive D: (e.g. D:\\MiKTeX) or use a cloud/docker/Typst fallback pipeline."
+  ]
+}
