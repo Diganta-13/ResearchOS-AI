@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=84.2.1", "wheel>=0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "researchos-ai"
+version = "0.1.0"
+description = "Autonomous Personal AI Research Operating System"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+    { name = "Lead Systems Architect & ResearchOS AI Engineering Core" }
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Operating System :: Microsoft :: Windows :: Windows 11",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    # Core Web, Routing & ASGI Runtime
+    "fastapi>=0.115.8",
+    "starlette>=0.41.3",
+    "uvicorn[standard]>=0.34.0",
+
+    # Data Validation, Serialization & Configuration
+    "pydantic>=2.10.4",
+    "pydantic-settings>=2.7.1",
+
+    # Environment, Serialization & Process Utilities
+    "python-dotenv>=1.2.4",
+    "pyyaml>=6.0.2",
+    "psutil>=6.1.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    # Testing & Async Framework
+    "pytest>=8.3.4",
+    "pytest-asyncio>=0.25.2",
+    "pytest-cov>=6.0.0",
+    "httpx>=0.28.1",
+
+    # Linting, Formatting & Code Diagnostics
+    "ruff>=0.8.6",
+    "pygments>=2.19.1",
+
+    # Toolchain & Security Verification
+    "pip-tools>=7.7.0",
+    "pip-audit>=2.8.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"researchos.memory.migrations" = ["*.sql"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
