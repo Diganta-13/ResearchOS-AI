@@ -72,3 +72,32 @@ class MigrationError(DatabaseError):
 
 class StateTransitionError(ResearchOSError):
     """Raised when an illegal or non-deterministic agent state transition is attempted."""
+
+
+# =====================================================================
+# Model & Provider Errors
+# =====================================================================
+
+
+class ModelError(ResearchOSError):
+    """Base exception for all AI model and provider operations."""
+
+
+class ProviderUnavailableError(ModelError):
+    """Raised when an AI provider endpoint is unreachable, offline, or unresponsive."""
+
+
+class ModelNotFoundError(ModelError):
+    """Raised when a requested model is not found in the provider's active catalog."""
+
+
+class ModelTimeoutError(ModelError):
+    """Raised when a model inference request exceeds the configured timeout."""
+
+
+class CloudInferenceDisabledError(ModelError):
+    """Raised when cloud inference is attempted while disabled in configuration."""
+
+
+class ModelContextLimitError(ModelError):
+    """Raised when prompt tokens exceed the model's configured context window."""

@@ -22,7 +22,7 @@ config/environment_report.json
 # Research data and generated files
 data/
 storage/
-models/
+/models/
 logs/
 *.db
 *.sqlite
